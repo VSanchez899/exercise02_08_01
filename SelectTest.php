@@ -6,19 +6,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-    <h2>MySQL Database Server Information</h2>
+    <h2>Create Newsletter Database</h2>
     <?php
     echo "<p>MySQL client Version: " . mysqli_get_client_info() . "</p>\n";
     $hostName = "localhost";
     $userName = "adminer";
     $password = "judge-quick-25";
+    $DBName = "newsletter1";
     $DBConnect = mysqli_connect($hostName, $userName, $password);
     if (!$DBConnect) {
-        echo "<p>Connection Failed</p>";
+        echo "<p>Connection error:" . mysqli_connect_error() . "</p>";
     } else {
-        echo "<p>MySQL connection: " . mysqli_get_host_info($DBConnect) . "</p>\n";
-        echo "<p>MySQL protocol version: " . mysqli_get_proto_info($DBConnect) . "</p>\n";
-        echo "<p>MySQL server version: " . mysqli_get_server_info($DBConnect) . "</p>\n";
+        
+        if (mysqli_select_db($DBConnect, $DBName)) {
+            echo "<p>Successfully created the \"$DBName\"" . "database.</p>\n";
+        } else {
+            echo "<p>could not create the \"$DBName\"" . "database: " . mysqli_error($DBConnect) . "</p>\n";
+        }
+        
         mysqli_close($DBConnect);
         echo "<p>Closing Database connection</p>\n";
     }
