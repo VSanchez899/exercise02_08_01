@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Create Subscribers T</title>
+        <title>News letter Subscribers 2</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-    <h2>Create Subscribers Table</h2>
+    <h2>News letter Subscribers 2</h2>
     <?php
     $hostName = "localhost";
     $userName = "adminer";
@@ -31,13 +31,12 @@
             echo "<th>Subscriber Date</th>";
             echo "<th>Subscriber Confirm</th>";
             echo "</tr>";
-            while ($row = mysqli_fetch_row($result)) {
+            while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
-                echo "<td>{$row[0]}</td>";
-                echo "<td>{$row[1]}</td>";
-                echo "<td>{$row[2]}</td>";
-                echo "<td>{$row[3]}</td>";
-                echo "<td>{$row[4]}</td>";
+                foreach ($row as $field) {
+                    echo "<td>{$field}</td>";    
+                    
+                }
                 echo "</tr>\n";
             }
             echo "</table>";
