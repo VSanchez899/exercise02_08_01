@@ -24,6 +24,7 @@
             }
             return $DBConnect;
         }
+        //this code was not finished
     
         function selectDB($DBConnect, $DBName){
             $success = mysqli_select_db($DBConnect, $DBName);
